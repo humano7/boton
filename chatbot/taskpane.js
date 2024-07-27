@@ -22,7 +22,15 @@ async function getEmailInfo() {
       const from = item.from.emailAddress;
       const to = item.to.map(recipient => recipient.emailAddress).join(", ");
       const cc = item.cc.map(recipient => recipient.emailAddress).join(", ");
-      const body = await item.body.getAsync(Office.CoercionType.Text);
+      const body = await new Promise((resolve, reject) => {
+        item.body.getAsync(Office.CoercionType.Text, (result) => {
+            if (result.status === Office.AsyncResultStatus.Succeeded) {
+                resolve(result.value);
+            } else {
+                reject(result.error.message);
+            }
+        });
+      });
 
       let attachments = "";
       if (item.attachments.length > 0) {
