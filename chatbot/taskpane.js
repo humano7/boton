@@ -39,6 +39,7 @@ async function getEmailInfo() {
       `;
   } catch (error) {
       console.error(error);
+      document.getElementById("email-info").innerHTML = error;
   }
 }
 
