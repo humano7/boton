@@ -5,14 +5,12 @@
 
 /* global document, Office */
 
-Office.onReady((info) => {
-  if (info.host === Office.HostType.Outlook) {
-    document.getElementById("sideload-msg").style.display = "none";
-    document.getElementById("get-email-info").onclick = getEmailInfo;
-    document.getElementById("app-body").style.display = "flex";
- //   document.getElementById("run").onclick = run;
-    
-  }
+document.addEventListener("DOMContentLoaded", function() {
+  Office.onReady((info) => {
+      if (info.host === Office.HostType.Outlook) {
+          document.getElementById("get-email-info").onclick = getEmailInfo;
+      }
+  });
 });
 
 async function getEmailInfo() {
@@ -22,15 +20,7 @@ async function getEmailInfo() {
       const from = item.from.emailAddress;
       const to = item.to.map(recipient => recipient.emailAddress).join(", ");
       const cc = item.cc.map(recipient => recipient.emailAddress).join(", ");
-      const body = await new Promise((resolve, reject) => {
-        item.body.getAsync(Office.CoercionType.Text, (result) => {
-            if (result.status === Office.AsyncResultStatus.Succeeded) {
-                resolve(result.value);
-            } else {
-                reject(result.error.message);
-            }
-        });
-      });
+      const body = await getBody(item);
 
       let attachments = "";
       if (item.attachments.length > 0) {
@@ -51,6 +41,17 @@ async function getEmailInfo() {
   }
 }
 
+function getBody(item) {
+  return new Promise((resolve, reject) => {
+      item.body.getAsync(Office.CoercionType.Text, (result) => {
+          if (result.status === Office.AsyncResultStatus.Succeeded) {
+              resolve(result.value);
+          } else {
+              reject(result.error.message);
+          }
+      });
+  });
+}
 //export async function run() {
   // Get a reference to the current message
 //const item = Office.context.mailbox.item;
