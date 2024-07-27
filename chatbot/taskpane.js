@@ -20,7 +20,10 @@ async function getEmailInfo() {
       const from = item.from.emailAddress;
       const to = item.to.map(recipient => recipient.emailAddress).join(", ");
       const cc = item.cc.map(recipient => recipient.emailAddress).join(", ");
-      const body = await getBody(item);
+      
+      const bodyText = await getBody(item, Office.CoercionType.Text);
+      const bodyHtml = await getBody(item, Office.CoercionType.Html);
+      let body = bodyText || bodyHtml || "No se pudo obtener el cuerpo del correo";
 
       let attachments = "";
       if (item.attachments.length > 0) {
@@ -41,21 +44,15 @@ async function getEmailInfo() {
   }
 }
 
-function getBody(item) {
+function getBody(item, coercionType) {
   return new Promise((resolve, reject) => {
-      item.body.getAsync(Office.CoercionType.Text, (result) => {
+      item.body.getAsync(coercionType, (result) => {
           if (result.status === Office.AsyncResultStatus.Succeeded) {
               resolve(result.value);
           } else {
-              reject(result.error.message);
+              console.error(`Error obteniendo el cuerpo del correo (${coercionType}):`, result.error.message);
+              resolve(null); // Resolver con null para intentar el siguiente formato
           }
       });
   });
 }
-//export async function run() {
-  // Get a reference to the current message
-//const item = Office.context.mailbox.item;
-
-// Write message property value to the task pane
-//document.getElementById("item-subject").innerHTML = "<b>Subject:</b> <br/>" + item.subject;
-//}
