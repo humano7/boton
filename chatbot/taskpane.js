@@ -10,7 +10,7 @@ Office.onReady((info) => {
     document.getElementById("sideload-msg").style.display = "none";
     document.getElementById("get-email-info").onclick = getEmailInfo;
     document.getElementById("app-body").style.display = "flex";
-    document.getElementById("run").onclick = run;
+ //   document.getElementById("run").onclick = run;
     
   }
 });
@@ -51,10 +51,10 @@ async function getEmailInfo() {
   }
 }
 
-export async function run() {
+//export async function run() {
   // Get a reference to the current message
-const item = Office.context.mailbox.item;
+//const item = Office.context.mailbox.item;
 
 // Write message property value to the task pane
-document.getElementById("item-subject").innerHTML = "<b>Subject:</b> <br/>" + item.subject;
-}
+//document.getElementById("item-subject").innerHTML = "<b>Subject:</b> <br/>" + item.subject;
+//}
