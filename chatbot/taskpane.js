@@ -16,7 +16,12 @@ document.addEventListener("DOMContentLoaded", function() {
 async function getEmailInfo() {
   try {
       const item = Office.context.mailbox.item;
-      console.log(item);
+      console.log(Office.context.mailbox.item.body.getAsync(
+        "text",
+        { asyncContext: "This is passed to the callback" },
+        function callback(result) {
+            // Do something with the result.
+        }));
       const subject = item.subject;
       const from = item.from.emailAddress;
       const to = item.to.map(recipient => recipient.emailAddress).join(", ");
