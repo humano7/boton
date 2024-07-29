@@ -13,7 +13,9 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>PREVIOPS</title>
+        <link rel="stylesheet" href="styles.css">
         <script src="https://telegram.org/js/telegram-web-app.js"></script>
+        <script src="https://kit.fontawesome.com/204ca37066.js" crossorigin="anonymous"></script>
         <style>
             body {
                 font-family: Arial, sans-serif;
@@ -72,11 +74,45 @@
             <img src="../images/previops_logo.png" height=50>
         </header>
     
-        <div class="svg-container">
-            <svg width="100" height="100">
-                <rect width="100" height="100" rx="15" ry="15" fill="green"/>
-            </svg>
-        </div>
+        <div class="container">
+            <div class="estado-ambiente">
+              <div class="ambiente preproductivo">
+                <i class="fas fa-circle"></i>
+                <span>Preproductivo</span>
+              </div>
+              <div class="ambiente productivo">
+                <i class="fas fa-circle"></i>
+                <span>Productivo</span>
+              </div>
+            </div>
+        
+            <div class="mini-grafico">
+              <canvas width="100" height="50"></canvas>
+            </div>
+        
+            <div class="seccion-noticias">
+              <h2>Noticias</h2>
+              <div class="noticias-container">
+                <div class="noticia">Noticia 1</div>
+                <div class="noticia">Noticia 2</div>
+                <div class="noticia">Noticia 3</div>
+              </div>
+            </div>
+        
+            <div class="numero-turno">
+              <h2>Número de turno/emergencia</h2>
+              <p>12345</p>
+            </div>
+        
+            <div class="botones">
+              <a href="#" class="btn btn-azul">Botón 1</a>
+              <a href="#" class="btn btn-verde">Botón 2</a>
+              <a href="#" class="btn btn-amarillo">Botón 3</a>
+              <a href="#" class="btn btn-rojo">Botón 4</a>
+            </div>
+        
+            <button class="btn-asistente">Consulta al asistente</button>
+          </div>
     
         <button class="round-button">Botón</button>
     

@@ -1,0 +1,50 @@
+/* Estilos generales */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+  
+  .container {
+    width: 300px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Sección de estado de ambiente */
+  .estado-ambiente {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .ambiente {
+    display: flex;
+    align-items: center;
+  }
+  
+  .ambiente i {
+    font-size: 24px;
+    margin-right: 10px;
+  }
+  
+  .ambiente.preproductivo i {
+    color: #f9a825; /* Naranja */
+  }
+  
+  .ambiente.productivo i {
+    color: #4caf50; /* Verde */
+  }
+  
+  /* Mini gráfico */
+  .mini-grafico {
+    margin-bottom: 20px;
+  }
+  
+  /* Sección de
+  
