@@ -16,8 +16,6 @@ document.addEventListener("DOMContentLoaded", function() {
 async function getEmailInfo() {
   try {
       const item = Office.context.mailbox.item;
-      const item2 = window.Office.context.mailbox.item.body;
-      console.log(item2);
       const subject = item.subject;
       const from = item.from.emailAddress;
       const to = item.to.map(recipient => recipient.emailAddress).join(", ");
@@ -50,6 +48,7 @@ function getBody(item, coercionType) {
   return new Promise((resolve, reject) => {
       item.body.getAsync(coercionType, (result) => {
           if (result.status === Office.AsyncResultStatus.Succeeded) {
+              console.log(`Cuerpo del correo (${coercionType}):`, result.value);
               resolve(result.value);
           } else {
               console.error(`Error obteniendo el cuerpo del correo (${coercionType}):`, result.error.message);
