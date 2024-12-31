@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>previops</title>
+    <link rel="stylesheet" href="style3.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>previops</h1>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#general">General</a></li>
+            <li><a href="#desarrollo">Desarrollo</a></li>
+            <li><a href="#calidad">Calidad</a></li>
+            <li><a href="#produccion">Producción</a></li>
+        </ul>
+    </nav>
+    
+    <main>
+        <section id="dashboard">
+            <h2>Mini Dashboard</h2>
+            <div class="spheres-container">
+                <div class="sphere-wrapper">
+                    <svg class="sphere" id="dev-sphere" width="100" height="100">
+                        <circle cx="50" cy="50" r="40" />
+                    </svg>
+                    <p>DEV</p>
+                </div>
+                <div class="sphere-wrapper">
+                    <svg class="sphere" id="qa-sphere" width="100" height="100">
+                        <circle cx="50" cy="50" r="40" />
+                    </svg>
+                    <p>QA</p>
+                </div>
+                <div class="sphere-wrapper">
+                    <svg class="sphere" id="prod-sphere" width="100" height="100">
+                        <circle cx="50" cy="50" r="40" />
+                    </svg>
+                    <p>PROD</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="latest-news">
+            <h2>Latest News</h2>
+            <ul id="news-list"></ul>
+        </section>
+    </main>
+    
+    <div id="loading-indicator" class="loading">Loading...</div>
+
+    <footer>
+        <p>&copy; 2023 previops. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="script3.js"></script>
+</body>
+</html>
